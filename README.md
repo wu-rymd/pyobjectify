@@ -1,7 +1,7 @@
 # pyobjectify
 Bridge the gap across the different file formats and streamline the process to accessing ingested data via Python objects
 
-![image](https://img.shields.io/badge/license-MIT-green)
+![image](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=022169) ![image](https://img.shields.io/github/issues/wu-rymd/pyobjectify?style=flat-square&color=841C1C)
 
 ## Overview
 Open data is abound. For example, NYC Open Data has over 3,000 datasets spanning over 97 agencies in New York City. This data comes in many different formats, including CSV, JSON, XML, XLS/XLSX, KML, KMZ, Shapefile, GeoJSON, JSON, and more.
