@@ -5,8 +5,6 @@ import unittest
 
 DIR = os.path.dirname(__file__) or "."
 
-# ========== JSON FILE ==========
-
 
 class TestPyobjectify(unittest.TestCase):
     def test_json_file_to_dict(self):
