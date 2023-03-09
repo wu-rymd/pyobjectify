@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pytest-results-${{ matrix.os }}-${{ matrix.python-version }}
-          path: python_junit.xml
+          path: coverage.xml
         if: ${{ always() }}
 
       - name: Upload coverage
