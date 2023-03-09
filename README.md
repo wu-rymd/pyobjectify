@@ -2,7 +2,7 @@
 
 Bridge the gap across the different file formats and streamline the process to accessing ingested data via Python objects
 
-![image](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=022169) ![image](https://img.shields.io/github/issues/wu-rymd/pyobjectify?style=flat-square&color=841C1C)
+![license](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=022169) ![issues](https://img.shields.io/github/issues/wu-rymd/pyobjectify?style=flat-square&color=841C1C) [![codecov](https://codecov.io/gh/wu-rymd/pyobjectify/branch/main/graph/badge.svg?token=410L0PN9UC)](https://codecov.io/gh/wu-rymd/pyobjectify) ![build](https://img.shields.io/github/actions/workflow/status/wu-rymd/pyobjectify/build.yml)
 
 ## Overview
 
