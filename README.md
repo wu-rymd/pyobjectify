@@ -12,16 +12,41 @@ In order to import and analyze the data in Python involves sending a request to 
 
 This project aims to streamline this process and bridge the gap across the different file formats to allow the end user to get started on data analytics more quickly with a quick function call.
 
-## Development
+## Install from pip
 
-This project uses a `Makefile` as a command registry, with the following commands:
+```
+pip install pyobjectify
+```
 
-- `make`: list available commands
-- `make develop`: install and build this library and its dependencies using `pip`
-- `make build`: build the library using `setuptools`
-- `make lint`: perform static analysis of this library with `flake8` and `black`
-- `make format`: autoformat this library using `black`
-- `make annotate`: run type checking using `mypy`
-- `make test`: run automated tests with `pytest`
-- `make coverage`: run automated tests with `pytest` and collect coverage information
-- `make dist`: package library for distribution
+## Quick start
+
+```python
+import pyobjectify
+import pandas as pd
+
+json_dict = pyobjectify.from_url("https://bit.ly/42KCUSv")  # URL holds JSON data, returns data in dict
+json_df = pyobjectify.from_url("https://bit.ly/42KCUSv", pd.DataFrames)  # User-specified output data type
+```
+
+## Supported types
+
+#### Connectivity tyes
+
+- Local files (_e.g._ `./relative/example.json`, `/absolute/path/example.json`)
+- Online, static (_e.g._ `https://some.website/example.json`, `http://bit.ly/some-json-endpoint`)
+
+For example, at the moment, a data stream from the Internet is not supported.
+
+#### Resource (input) data types
+
+- JSON
+- CSV
+- TSV
+- XML
+
+#### Supported conversions
+
+- JSON &rarr; `dict`, `list`, `pandas.DataFrame`
+- CSV &rarr; `list`
+- TSV &rarr; `list`
+- XML &rarr; `dict`

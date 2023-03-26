@@ -12,6 +12,8 @@ exclude .gitignore
 exclude .gitattributes
 
 include *.md
+include *.yml
+recursive-include pyobjectify *.example
 recursive-include pyobjectify *.csv
 recursive-include pyobjectify *.json
 recursive-include pyobjectify *.tsv

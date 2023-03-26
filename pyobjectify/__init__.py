@@ -1,8 +1,14 @@
 from ._version import __version__
 from .pyobjectify import (
-    json_file_to_dict,
-    json_api_to_dict,
-    csv_file_to_list,
-    tsv_file_to_list,
-    xml_file_to_dict,
+    InputType,
+    OUTPUT_TYPES,
+    CONVERSIONS,
+    Connectivity,
+    Resource,
+    url_to_connectivity,
+    retrieve_resource,
+    get_resource_types,
+    get_conversions,
+    convert,
+    from_url,
 )

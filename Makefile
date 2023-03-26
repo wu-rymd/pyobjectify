@@ -5,6 +5,7 @@ develop:  ## install dependencies and build library
 	python -m pip install -e .[develop]
 
 build:  ## build the python library
+	rm -rf htmlcov/
 	python setup.py build build_ext --inplace
 
 install:  ## install library
@@ -14,14 +15,16 @@ install:  ## install library
 # LINTS #
 #########
 lint:  ## run static analysis with flake8
-	python -m black --check pyobjectify/**/*.py setup.py
-	python -m flake8 pyobjectify/**/*.py setup.py
+#ls pyobjectify/**/*.py
+	python -m black --check pyobjectify/*.py pyobjectify/*/*.py setup.py
+	python -m flake8 pyobjectify/*.py pyobjectify/*/*.py setup.py
 
 # Alias
 lints: lint
 
 format:  ## run autoformatting with black
-	python -m black pyobjectify/**/*.py setup.py
+# ls pyobjectify/**/*.py
+	python -m black pyobjectify/*.py pyobjectify/*/*.py setup.py
 
 # alias
 fix: format
