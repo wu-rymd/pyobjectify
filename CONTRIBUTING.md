@@ -1,1 +1,38 @@
-TODO
+## Development
+
+### Prerequisites
+
+- `python` 3.7 or higher.
+- `git clone` the repo locally or create your own fork.
+- Run `make develop` to install the development dependencies.
+
+### Pull request checklist
+
+- [x] Update all relevant existing tests in [`/pyobjectify/tests`](https://github.com/wu-rymd/pyobjectify/tree/main/pyobjectify/tests) as necessary.
+- [x] Create relevant tests as necessary. All test files and test class functions must begin with `test_`.
+- [x] If any subdirectories were created, add paths to `Makefile` in the [black](https://github.com/wu-rymd/pyobjectify/blob/main/Makefile#L23-L24) and [flake8](https://github.com/wu-rymd/pyobjectify/blob/main/Makefile#L16-L18) configurations.
+  - Avoid `**` (for now). [It's weird](https://superuser.com/questions/619849/bash-extended-globbing-inside-a-makefile). Globstar relies on newer versions of bash shell that may not be installed across many Macs.
+- [x] Add any new dependent library files to `/MANIFEST.in`
+- [x] Add any new pip packages to `/pyproject.toml`
+- [x] Run `make test` from the root directory and fix any failures.
+- [x] Run `make coverage` to see the branch coverage results. Ensure that the coverage does not decrease. If it does and is warranted, please document this in your pull request.
+  - You can also run `make coverage-html` to generate an HTML report in `/htmlcov`.
+- [x] Run `make format` to run the autoformatter.
+- [x] Run `make lint` to check for any linting errors and fix any errors that occur.
+- [x] If anything in [`README.md`](https://github.com/wu-rymd/pyobjectify/blob/main/README.md) needs to be updated, please change as necessary.
+- [x] If all of the following run successfully, squash all commits into one, push changes to your own branch, and create the pull request with at least one other contributor as a reviewer.
+- [x] Merge the pull request once approved by the reviewer(s).
+
+### Built-in commands
+
+This project uses a `Makefile` as a command registry, with the following commands:
+
+- `make`: list available commands
+- `make develop`: install and build this library and its dependencies using `pip`
+- `make build`: build the library using `setuptools`
+- `make lint`: perform static analysis of this library with `flake8` and `black`
+- `make format`: autoformat this library using `black`
+- `make annotate`: run type checking using `mypy`
+- `make test`: run automated tests with `pytest`
+- `make coverage`: run automated tests with `pytest` and collect coverage information
+- `make dist`: package library for distribution
