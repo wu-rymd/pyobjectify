@@ -1,8 +1,8 @@
-# pyobjectify
+# pyobjectify [![PyPI](https://img.shields.io/pypi/v/pyobjectify?style=flat-square&color=222222)](https://pypi.org/project/pyobjectify)
 
 Bridge the gap across the different file formats and streamline the process to accessing ingested data via Python objects
 
-![license](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=022169) ![issues](https://img.shields.io/github/issues/wu-rymd/pyobjectify?style=flat-square&color=841C1C) [![codecov](https://codecov.io/gh/wu-rymd/pyobjectify/branch/main/graph/badge.svg?token=410L0PN9UC)](https://codecov.io/gh/wu-rymd/pyobjectify) ![build](https://img.shields.io/github/actions/workflow/status/wu-rymd/pyobjectify/build.yml)
+![license](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=022169) ![issues](https://img.shields.io/github/issues/wu-rymd/pyobjectify?style=flat-square&color=841C1C) [![codecov](https://codecov.io/gh/wu-rymd/pyobjectify/branch/main/graph/badge.svg?token=410L0PN9UC)](https://codecov.io/gh/wu-rymd/pyobjectify) ![build](https://img.shields.io/github/actions/workflow/status/wu-rymd/pyobjectify/build.yml?style=flat-square)
 
 ## Overview
 
