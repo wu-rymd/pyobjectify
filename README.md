@@ -25,7 +25,7 @@ import pyobjectify
 import pandas as pd
 
 json_dict = pyobjectify.from_url("https://bit.ly/42KCUSv")  # URL holds JSON data, returns data in dict
-json_df = pyobjectify.from_url("https://bit.ly/42KCUSv", pd.DataFrames)  # User-specified output data type
+json_df = pyobjectify.from_url("https://bit.ly/42KCUSv", pd.DataFrame)  # User-specified output data type
 ```
 
 ## Supported types
