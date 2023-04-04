@@ -1,4 +1,4 @@
-# pyobjectify [![PyPI](https://img.shields.io/pypi/v/pyobjectify?style=flat-square&color=222222)](https://pypi.org/project/pyobjectify)
+# pyobjectify [![PyPI](https://img.shields.io/pypi/v/pyobjectify?style=flat-square&color=222222)](https://pypi.org/project/pyobjectify) [![docs](https://img.shields.io/badge/-docs-black?style=flat-square)](https://wu-rymd.github.io/pyobjectify/docs/_build/index.html) 
 
 Bridge the gap across the different file formats and streamline the process to accessing ingested data via Python objects
 
