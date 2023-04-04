@@ -40,6 +40,8 @@ recursive-include docs *.txt
 recursive-include docs *.woff
 recursive-include docs *.woff2
 
+recursive-include docs *.nojekyll
+
 # Patterns to exclude from any directory
 global-exclude *~
 global-exclude *.pyc
