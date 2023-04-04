@@ -61,7 +61,11 @@ develop = [
     "pytest>=4.3.0",
     "pytest-cov>=2.6.1",
     "twine",
-    "wheel"
+    "wheel",
+    "sphinx==6.1.3",
+    "sphinx-rtd-theme==1.2.0",
+    "recommonmark==0.7.1",
+    "sphinxcontrib-napoleon==0.7"
 ]
 
 [tool.black]
