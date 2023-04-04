@@ -5,58 +5,67 @@ from pandas import DataFrame, json_normalize
 from requests import get
 from xmltodict import parse
 
-"""
-An enumeration of the input types supported by pyobjectify.
-"""
-
 
 @unique
 class InputType(Enum):
+    """
+    An enumeration of the input types supported by pyobjectify.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+    """
+
     JSON = auto()
     CSV = auto()
     TSV = auto()
     XML = auto()
 
 
+OUTPUT_TYPES = (list, dict, DataFrame)
 """
 A set of the output types supported by pyobjectify.
-"""
-OUTPUT_TYPES = (list, dict, DataFrame)
 
+The end-user does not have to interface with this, but it is provided for more granular operations.
 """
-A dictionary of allowable conversions,
-where the key is a supported input type,
-and the value is a list of supported output types.
-"""
+
 CONVERSIONS = {
     InputType.JSON: [dict, list, DataFrame],
     InputType.CSV: [list],
     InputType.TSV: [list],
     InputType.XML: [dict],
 }
-
 """
-An enumeration of the supported file connectivity types:
-- ONLINE_STATIC = The URL points to a static file on the Internet.
-- LOCAL = The URL is a path to a local file.
+A dictionary of allowable conversions,
+where the key is a supported input type,
+and the value is a list of supported output types.
 
-For example, at the moment, a data stream from the Internet is not supported.
+The end-user does not have to interface with this, but it is provided for more granular operations.
 """
 
 
 @unique
 class Connectivity(Enum):
+    """
+    An enumeration of the supported file connectivity types:
+
+    - `ONLINE_STATIC` = The URL points to a static file on the Internet.
+    - `LOCAL` = The URL is a path to a local file.
+
+    For example, at the moment, a data stream from the Internet is not supported.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+    """
+
     ONLINE_STATIC = auto()
     LOCAL = auto()
 
 
-"""
-The Resource class stores some metadata about the resource to simplify the code.
-The end-user does not have to interface with it.
-"""
-
-
 class Resource:
+    """
+    The Resource class stores some metadata about the resource to simplify the code.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+    """
+
     def __init__(self, url, connectivity):
         url = url.replace("file://", "")
         self.url = url
@@ -82,18 +91,18 @@ class Resource:
         return self.url == other.url and self.connectivity == other.connectivity and self.plaintext == other.plaintext
 
 
-"""
-Get the connectivity type of the resource.
-
-Input:
-- url: The URL to the resource.
-
-Output:
-- An attribute in the enumeration Connectivity. The calculated connectivity type of the resource.
-"""
-
-
 def url_to_connectivity(url):
+    """
+    Get the connectivity type of the resource.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        url (str): The URL to a resource.
+
+    Returns:
+        Connectivity: An attribute in the enumeration `Connectivity`. The calculated connectivity of the resource type.
+    """
     local_conditions = [url.startswith("file:///"), url.startswith("/"), url.startswith(".")]
     if any(local_conditions):
         return Connectivity.LOCAL
@@ -101,40 +110,44 @@ def url_to_connectivity(url):
         return Connectivity.ONLINE_STATIC
 
 
-"""
-Retrieves the resource at the URL using the connectivity type and stores it in a Resource object.
-
-Input:
-- url: The URL to the resource.
-- connectivity: An attribute in the enumeration Connectivity. The calculated connectivity type of the resource.
-
-Output:
-- The Resource object for the resource at the URL specified.
-"""
-
-
 def retrieve_resource(url, connectivity):
+    """
+    Retrieves the resource at the URL using the connectivity type and stores it in a Resource object.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        url (str): The URL to a resource.
+        connectivity (:obj:`Connectivity`): An attribute in the enumeration Connectivity.
+            The calculated connectivity type of the resource.
+
+    Returns:
+        Resource: The Resource object for the resource at the URL specified.
+
+    Raises:
+        TypeError: The connectivity type is not supported.
+    """
     if not isinstance(connectivity, Connectivity):
         raise TypeError(f"The connectivity type {connectivity} is not supported.")
 
     return Resource(url, connectivity)
 
 
-"""
-Get possible resource types of the resource.
-
-Input:
-- resource: The Resource object for the resource.
-
-Output:
-- A list of possible resource types of the resource.
-
-Exceptions:
-- TypeError: The resource is of a type that is not supported.
-"""
-
-
 def get_resource_types(resource):
+    """
+    Get possible resource types of the resource.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the resource.
+
+    Returns:
+        list: A list of possible resource types of the resource.
+
+    Raises:
+        TypeError: The resource is of a type that is not supported.
+    """
     possible = list(InputType)
 
     try:
@@ -189,23 +202,24 @@ def get_resource_types(resource):
     return possible
 
 
-"""
-Get possible conversions for the probable resource types.
-If the user specified a preferred output type, filter out any undesirable conversions to consider.
+def get_conversions(in_types, out_type=None):
+    """
+    Get possible conversions for the probable resource types.
+    If the user specified a preferred output type, filter out any undesirable conversions to consider.
 
-Inputs:
-- in_types: A set of calculated possible resource types.
-- out_type: Optional. The user-specified data type of the output.
+    The end-user does not have to interface with this, but it is provided for more granular operations.
 
-Output:
-- A set of (in, out) conversions as described above.
+    Args:
+        in_types (:obj:`list`): A list of calculated possible resource types.
+        out_type (:obj:`class`, optional): The user-specified data type of the output.
 
-Exceptions:
-- TypeError: There are no possible conversions.
-"""
+    Returns:
+        list: A list of (in, out) conversion tuples as described above.
+    Raises:
+        TypeError: There are no possible conversions.
+    """
 
-
-def get_conversions(in_types, out_type=None):  # There is guaranteed at least one probable in_type
+    # There is guaranteed at least one probable in_type
     # Go through each probable resource data type.
     # Use lists to preserve order.
     conversions = []  # To make a list of possible conversions.
@@ -228,87 +242,123 @@ def get_conversions(in_types, out_type=None):  # There is guaranteed at least on
     return conversions
 
 
-"""
-Helper function to convert json data to a dictionary.
-"""
-
-
 def json_to_list(resource):
+    """
+    Helper function to convert JSON data to a list.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the JSON resource.
+
+    Returns:
+        list: A list represenation of the JSON resource.
+    """
     json = loads(resource.plaintext)
     if type(json) is dict:
         return [json]
     return json
 
 
-"""
-Helper function to convert json data to a list.
-"""
-
-
 def json_to_dict(resource):
+    """
+    Helper function to convert JSON data to a dictionary.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the JSON resource.
+
+    Returns:
+        dict: A dictionary represenation of the JSON resource.
+    """
     json = loads(resource.plaintext)
     if type(json) is list:
         return {"data": json}
     return json
 
 
-"""
-Helper function to convert json data to a pandas DataFrame.
-"""
-
-
 def json_to_dataframe(resource):
+    """
+    Helper function to convert JSON data to a pandas DataFrame.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the JSON resource.
+
+    Returns:
+        pandas.DataFrame: A pandas DataFrame represenation of the JSON resource.
+    """
     json = loads(resource.plaintext)
     df = json_normalize(json)
     return df
 
 
-"""
-Helper function to convert csv data to a list.
-"""
-
-
 def csv_to_list(resource):
+    """
+    Helper function to convert CSV data to a list.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the CSV resource.
+
+    Returns:
+        list: A list represenation of the CSV resource.
+    """
     rows = DictReader(resource.response)
     return list(rows)
 
 
-"""
-Helper function to convert tsv data to a list.
-"""
-
-
 def tsv_to_list(resource):
+    """
+    Helper function to convert TSV data to a list.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the TSV resource.
+
+    Returns:
+        list: A list represenation of the TSV resource.
+    """
     rows = DictReader(resource.response, delimiter="\t")
     return list(rows)
 
 
-"""
-Helper function to convert xml data to a dict.
-"""
-
-
 def xml_to_dict(resource):
+    """
+    Helper function to convert XML data to a dictionary.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): The Resource object for the XML resource.
+
+    Returns:
+        dict: A dictionary represenation of the XML resource.
+    """
     rows = parse(resource.plaintext)
     return rows
 
 
-"""
-Attempts to convert the resource data through possible conversions.
-
-Input:
-- resource: The Resource object for the resource.
-- conversions: The set of all possible conversions, filtered if user specified output data type.
-
-Output:
-- The first successful conversion from the hypothesized resource type to an output data type.
-
-Exceptions:
-- TypeError: None of the possible conversions were successful.
-"""
-
-
 def convert(resource, conversions):
+    """
+    Attempts to convert the resource data through possible conversions.
+
+    The end-user does not have to interface with this, but it is provided for more granular operations.
+
+    Args:
+        resource (:obj:`Resource`): he Resource object for the resource.
+        conversions (list): The list of all possible conversions, filtered if user specified output data type.
+
+    Returns:
+        object: The first successful conversion from the probable resource type to an output data type.
+
+    Raises:
+        TypeError: None of the possible conversions were successful.
+    """
     for conversion in conversions:
         try:
             i_type, o_type = conversion
@@ -334,24 +384,22 @@ def convert(resource, conversions):
     raise TypeError("The type of the resource is not supported.")
 
 
-"""
-The main interface.
-Given a URL, converts the resource data to a parsable Python object.
-The user can specify an output data type.
-
-Inputs:
-- url: A URL to a resource.
-- out_type: Optional. The user-specified data type of the output.
-
-Output:
-- A parsable Python object representation of the resource.
-
-Exceptions:
-- TypeError: The user-specified data type of the output
-"""
-
-
 def from_url(url, out_type=None):
+    """
+    This is the main interface that the end-user interacts with.
+        Given a URL, converts the resource data to a parsable Python object.
+
+    Args:
+        url (str): A URL to a resource.
+        out_type (:obj:`class`, optional): The user-specified data type of the output.
+
+    Returns:
+        object: A parsable Python object representation of the resource.
+
+    Raises:
+        TypeError: The user-specified data type of the output is not supported.
+    """
+
     if out_type is not None and out_type not in OUTPUT_TYPES:
         raise TypeError(f"The specified output type {out_type} is not supported.")
 
