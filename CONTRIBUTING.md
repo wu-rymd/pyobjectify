@@ -17,6 +17,7 @@
   - Avoid `**` (for now). [It's weird](https://superuser.com/questions/619849/bash-extended-globbing-inside-a-makefile). Globstar relies on newer versions of bash shell that may not be installed across many Macs.
 - [x] Add any new dependent library files to `/MANIFEST.in`
 - [x] Add any new pip packages to `/pyproject.toml`
+- [x] Run `make check` from the root directory and fix any errors.
 - [x] Run `make test` from the root directory and fix any failures.
 - [x] Run `make coverage` to see the branch coverage results. Ensure that the coverage does not decrease. If it does and is warranted, please document this in your pull request.
   - You can also run `make coverage-html` to generate an HTML report in `/htmlcov`.

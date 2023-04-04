@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyobjectify package &mdash; pyobjectify 0.1.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyobjectify
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">pyobjectify package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pyobjectify.pyobjectify">pyobjectify.pyobjectify module</a><ul>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.CONVERSIONS"><code class="docutils literal notranslate"><span class="pre">CONVERSIONS</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity"><code class="docutils literal notranslate"><span class="pre">Connectivity</span></code></a><ul>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity.LOCAL"><code class="docutils literal notranslate"><span class="pre">Connectivity.LOCAL</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity.ONLINE_STATIC"><code class="docutils literal notranslate"><span class="pre">Connectivity.ONLINE_STATIC</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType"><code class="docutils literal notranslate"><span class="pre">InputType</span></code></a><ul>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.CSV"><code class="docutils literal notranslate"><span class="pre">InputType.CSV</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.JSON"><code class="docutils literal notranslate"><span class="pre">InputType.JSON</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.TSV"><code class="docutils literal notranslate"><span class="pre">InputType.TSV</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.XML"><code class="docutils literal notranslate"><span class="pre">InputType.XML</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.OUTPUT_TYPES"><code class="docutils literal notranslate"><span class="pre">OUTPUT_TYPES</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.Resource"><code class="docutils literal notranslate"><span class="pre">Resource</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.csv_to_list"><code class="docutils literal notranslate"><span class="pre">csv_to_list()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.from_url"><code class="docutils literal notranslate"><span class="pre">from_url()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.get_conversions"><code class="docutils literal notranslate"><span class="pre">get_conversions()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.get_resource_types"><code class="docutils literal notranslate"><span class="pre">get_resource_types()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.json_to_dataframe"><code class="docutils literal notranslate"><span class="pre">json_to_dataframe()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.json_to_dict"><code class="docutils literal notranslate"><span class="pre">json_to_dict()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.json_to_list"><code class="docutils literal notranslate"><span class="pre">json_to_list()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.retrieve_resource"><code class="docutils literal notranslate"><span class="pre">retrieve_resource()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.tsv_to_list"><code class="docutils literal notranslate"><span class="pre">tsv_to_list()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.url_to_connectivity"><code class="docutils literal notranslate"><span class="pre">url_to_connectivity()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.xml_to_dict"><code class="docutils literal notranslate"><span class="pre">xml_to_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-pyobjectify">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyobjectify</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pyobjectify package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/pyobjectify.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyobjectify-package">
+<h1>pyobjectify package<a class="headerlink" href="#pyobjectify-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-pyobjectify.pyobjectify">
+<span id="pyobjectify-pyobjectify-module"></span><h2>pyobjectify.pyobjectify module<a class="headerlink" href="#module-pyobjectify.pyobjectify" title="Permalink to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.CONVERSIONS">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">CONVERSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;InputType.JSON:</span> <span class="pre">1&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'list'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;],</span> <span class="pre">&lt;InputType.CSV:</span> <span class="pre">2&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.TSV:</span> <span class="pre">3&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.XML:</span> <span class="pre">4&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;]}</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.CONVERSIONS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary of allowable conversions,
+where the key is a supported input type,
+and the value is a list of supported output types.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.Connectivity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">Connectivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.Connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration of the supported file connectivity types:</p>
+<ul class="simple">
+<li><p><cite>ONLINE_STATIC</cite> = The URL points to a static file on the Internet.</p></li>
+<li><p><cite>LOCAL</cite> = The URL is a path to a local file.</p></li>
+</ul>
+<p>For example, at the moment, a data stream from the Internet is not supported.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.Connectivity.LOCAL">
+<span class="sig-name descname"><span class="pre">LOCAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.Connectivity.LOCAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.Connectivity.ONLINE_STATIC">
+<span class="sig-name descname"><span class="pre">ONLINE_STATIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.Connectivity.ONLINE_STATIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">InputType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.InputType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration of the input types supported by pyobjectify.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.CSV">
+<span class="sig-name descname"><span class="pre">CSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.CSV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.JSON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.TSV">
+<span class="sig-name descname"><span class="pre">TSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.TSV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.XML">
+<span class="sig-name descname"><span class="pre">XML</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.XML" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.OUTPUT_TYPES">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">OUTPUT_TYPES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'list'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'dict'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;)</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.OUTPUT_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set of the output types supported by pyobjectify.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.Resource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">Resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.Resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Resource class stores some metadata about the resource to simplify the code.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.convert">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to convert the resource data through possible conversions.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – he Resource object for the resource.</p></li>
+<li><p><strong>conversions</strong> (<em>list</em>) – The list of all possible conversions, filtered if user specified output data type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The first successful conversion from the probable resource type to an output data type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – None of the possible conversions were successful.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.csv_to_list">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">csv_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.csv_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert CSV data to a list.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the CSV resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list represenation of the CSV resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.from_url">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.from_url" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This is the main interface that the end-user interacts with.</dt><dd><p>Given a URL, converts the resource data to a parsable Python object.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – A URL to a resource.</p></li>
+<li><p><strong>out_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">class</span></code>, optional) – The user-specified data type of the output.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A parsable Python object representation of the resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – The user-specified data type of the output is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.get_conversions">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">get_conversions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.get_conversions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get possible conversions for the probable resource types.
+If the user specified a preferred output type, filter out any undesirable conversions to consider.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_types</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – A list of calculated possible resource types.</p></li>
+<li><p><strong>out_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">class</span></code>, optional) – The user-specified data type of the output.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of (in, out) conversion tuples as described above.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – There are no possible conversions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.get_resource_types">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">get_resource_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.get_resource_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get possible resource types of the resource.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of possible resource types of the resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – The resource is of a type that is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.json_to_dataframe">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">json_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.json_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert JSON data to a pandas DataFrame.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the JSON resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame represenation of the JSON resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.json_to_dict">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">json_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.json_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert JSON data to a dictionary.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the JSON resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary represenation of the JSON resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.json_to_list">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">json_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.json_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert JSON data to a list.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the JSON resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list represenation of the JSON resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.retrieve_resource">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">retrieve_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.retrieve_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the resource at the URL using the connectivity type and stores it in a Resource object.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL to a resource.</p></li>
+<li><p><strong>connectivity</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity" title="pyobjectify.pyobjectify.Connectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Connectivity</span></code></a>) – An attribute in the enumeration Connectivity.
+The calculated connectivity type of the resource.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Resource object for the resource at the URL specified.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource">Resource</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – The connectivity type is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.tsv_to_list">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">tsv_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.tsv_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert TSV data to a list.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the TSV resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list represenation of the TSV resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.url_to_connectivity">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">url_to_connectivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.url_to_connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the connectivity type of the resource.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – The URL to a resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An attribute in the enumeration <cite>Connectivity</cite>. The calculated connectivity of the resource type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity" title="pyobjectify.pyobjectify.Connectivity">Connectivity</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.xml_to_dict">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">xml_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.xml_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert XML data to a dictionary.</p>
+<p>The end-user does not have to interface with this, but it is provided for more granular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resource</strong> (<a class="reference internal" href="#pyobjectify.pyobjectify.Resource" title="pyobjectify.pyobjectify.Resource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Resource</span></code></a>) – The Resource object for the XML resource.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary represenation of the XML resource.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyobjectify">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyobjectify" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Raymond Wu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
