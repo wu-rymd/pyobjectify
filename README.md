@@ -43,6 +43,7 @@ For example, at the moment, a data stream from the Internet is not supported.
 - CSV
 - TSV
 - XML
+- XLSX
 
 #### Supported conversions
 
@@ -50,3 +51,4 @@ For example, at the moment, a data stream from the Internet is not supported.
 - CSV &rarr; `list`
 - TSV &rarr; `list`
 - XML &rarr; `dict`
+- XLSX &rarr; `dict`

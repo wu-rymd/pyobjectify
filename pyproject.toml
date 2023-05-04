@@ -11,7 +11,7 @@ name = "pyobjectify"
 authors = [{name = "Raymond Wu", email = "wu.raymond@columbia.edu"}]
 description="Bridging the gap across the different file formats and streamlining the process to accessing ingested data via Python objects"
 readme = "README.md"
-version = "0.1.1"
+version = "0.2.1"
 requires-python = ">=3.7"
 
 dependencies = [
@@ -27,7 +27,8 @@ dependencies = [
     "pandas==1.5.3",
     "python-dateutil==2.8.2",
     "pytz==2023.2",
-    "six==1.16.0"
+    "six==1.16.0",
+    "openpyxl==3.1.2"
 ]
 
 classifiers = [

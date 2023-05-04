@@ -18,6 +18,7 @@ recursive-include pyobjectify *.csv
 recursive-include pyobjectify *.json
 recursive-include pyobjectify *.tsv
 recursive-include pyobjectify *.xml
+recursive-include pyobjectify *.xlsx
 
 recursive-include docs *.bat
 recursive-include docs *.md
