@@ -1,7 +1,7 @@
 from csv import DictReader
 from enum import auto, Enum, unique
 from json import loads
-from pandas import DataFrame, json_normalize
+from pandas import DataFrame, json_normalize, read_excel
 from requests import get
 from xmltodict import parse
 
@@ -18,6 +18,7 @@ class InputType(Enum):
     CSV = auto()
     TSV = auto()
     XML = auto()
+    XLSX = auto()
 
 
 OUTPUT_TYPES = (list, dict, DataFrame)
@@ -32,6 +33,7 @@ CONVERSIONS = {
     InputType.CSV: [list],
     InputType.TSV: [list],
     InputType.XML: [dict],
+    InputType.XLSX: [dict],
 }
 """
 A dictionary of allowable conversions,
@@ -81,8 +83,11 @@ class Resource:
 
             file_obj = open(url, "r")
             self.response = file_obj
-            self.plaintext = file_obj.read()
-            self.response.seek(0, 0)
+            try:
+                self.plaintext = file_obj.read()
+                self.response.seek(0, 0)
+            except Exception:  # XLSX data does not like to be read
+                self.plaintext = None
 
     def __eq__(self, other):
         # For Internet resources,
@@ -195,6 +200,14 @@ def get_resource_types(resource):
         assert resource.plaintext[0] == "<"
     except Exception:
         possible.remove(InputType.XML)
+
+    try:
+        df = read_excel(resource.url, sheet_name=None)
+        sheets_dict = {}
+        for sheet_name, df in df.items():
+            sheets_dict[sheet_name] = df.to_dict()
+    except Exception:
+        possible.remove(InputType.XLSX)
 
     if len(possible) == 0:
         raise TypeError("The type of the resource is not supported.")
@@ -343,6 +356,17 @@ def xml_to_dict(resource):
     return rows
 
 
+def xlsx_to_dict(resource):
+    """
+    Helper function to convert XLSX data to a dictionary.
+    """
+    df = read_excel(resource.url, sheet_name=None)
+    sheets_dict = {}
+    for sheet_name, df in df.items():
+        sheets_dict[sheet_name] = df.to_dict()
+    return sheets_dict
+
+
 def convert(resource, conversions):
     """
     Attempts to convert the resource data through possible conversions.
@@ -377,6 +401,8 @@ def convert(resource, conversions):
                 return tsv_to_list(resource)
             elif i_type is InputType.XML:
                 return xml_to_dict(resource)
+            elif i_type is InputType.XLSX:
+                return xlsx_to_dict(resource)
         except Exception:
             continue  # Try the next conversion
 

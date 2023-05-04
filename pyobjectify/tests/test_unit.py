@@ -13,6 +13,7 @@ URL_JSON = f"{DIR}/data/example.json"
 URL_CSV = f"{DIR}/data/example.csv"
 URL_TSV = f"{DIR}/data/example.tsv"
 URL_XML = f"{DIR}/data/example.xml"
+URL_XLSX = f"{DIR}/data/example.xlsx"
 URL_OTHER = f"{DIR}/data/data.example"
 
 CONNECTIVITY_UNSUPPORTED = str
@@ -64,6 +65,11 @@ class TestPyobjectify(unittest.TestCase):
         actual = pyob.get_resource_types(resource)
         assert pyob.InputType.XML in actual
 
+    def test_get_resource_types_xlsx(self):
+        resource = pyob.Resource(URL_XLSX, pyob.Connectivity.LOCAL)
+        actual = pyob.get_resource_types(resource)
+        assert pyob.InputType.XLSX in actual
+
     def test_get_resource_types_error(self):
         resource = pyob.Resource(URL_OTHER, pyob.Connectivity.LOCAL)
         with self.assertRaises(TypeError):
@@ -87,6 +93,11 @@ class TestPyobjectify(unittest.TestCase):
     def test_get_conversions_xml(self):
         actual = pyob.get_conversions([pyob.InputType.XML])
         expected = [(pyob.InputType.XML, dict)]
+        self.assertEqual(actual, expected)
+
+    def test_get_conversions_xlsx(self):
+        actual = pyob.get_conversions([pyob.InputType.XLSX])
+        expected = [(pyob.InputType.XLSX, dict)]
         self.assertEqual(actual, expected)
 
     def test_get_conversions_json_dataframe(self):
@@ -895,6 +906,29 @@ class TestPyobjectify(unittest.TestCase):
                     ]
                 }
             }
+        }
+        self.assertEqual(actual, expected)
+
+    def test_convert_xlsx_dict(self):
+        resource = pyob.Resource(URL_XLSX, pyob.Connectivity.LOCAL)
+        actual = pyob.convert(resource, [(pyob.InputType.XLSX, dict)])
+        expected = {
+            "Sheet1": {
+                "Abbreviation": {0: "MN", 1: "BK", 2: "QN", 3: "BX", 4: "SI"},
+                "Borough": {0: "Manhattan", 1: "Brooklyn", 2: "Queens", 3: "The Bronx", 4: "Staten Island"},
+                "Index": {0: 1, 1: 2, 2: 3, 3: 4, 4: 5},
+            },
+            "Sheet2": {
+                "Abbreviation": {0: "XM", 1: "XB", 2: "XQ", 3: "XX", 4: "XS"},
+                "Borough": {
+                    0: "Not Manhattan",
+                    1: "Not Brooklyn",
+                    2: "Not Queens",
+                    3: "Not The Bronx",
+                    4: "Not Staten Island",
+                },
+                "Index": {0: 6, 1: 7, 2: 8, 3: 9, 4: 10},
+            },
         }
         self.assertEqual(actual, expected)
 

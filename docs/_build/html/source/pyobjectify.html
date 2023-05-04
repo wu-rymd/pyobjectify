@@ -53,6 +53,7 @@
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.CSV"><code class="docutils literal notranslate"><span class="pre">InputType.CSV</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.JSON"><code class="docutils literal notranslate"><span class="pre">InputType.JSON</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.TSV"><code class="docutils literal notranslate"><span class="pre">InputType.TSV</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.XLSX"><code class="docutils literal notranslate"><span class="pre">InputType.XLSX</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.InputType.XML"><code class="docutils literal notranslate"><span class="pre">InputType.XML</span></code></a></li>
 </ul>
 </li>
@@ -69,6 +70,7 @@
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.retrieve_resource"><code class="docutils literal notranslate"><span class="pre">retrieve_resource()</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.tsv_to_list"><code class="docutils literal notranslate"><span class="pre">tsv_to_list()</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.url_to_connectivity"><code class="docutils literal notranslate"><span class="pre">url_to_connectivity()</span></code></a></li>
+<li><a class="reference internal" href="#pyobjectify.pyobjectify.xlsx_to_dict"><code class="docutils literal notranslate"><span class="pre">xlsx_to_dict()</span></code></a></li>
 <li><a class="reference internal" href="#pyobjectify.pyobjectify.xml_to_dict"><code class="docutils literal notranslate"><span class="pre">xml_to_dict()</span></code></a></li>
 </ul>
 </li>
@@ -110,7 +112,7 @@
 <span id="pyobjectify-pyobjectify-module"></span><h2>pyobjectify.pyobjectify module<a class="headerlink" href="#module-pyobjectify.pyobjectify" title="Permalink to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="pyobjectify.pyobjectify.CONVERSIONS">
-<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">CONVERSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;InputType.JSON:</span> <span class="pre">1&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'list'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;],</span> <span class="pre">&lt;InputType.CSV:</span> <span class="pre">2&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.TSV:</span> <span class="pre">3&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.XML:</span> <span class="pre">4&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;]}</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.CONVERSIONS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">CONVERSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;InputType.JSON:</span> <span class="pre">1&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'list'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;],</span> <span class="pre">&lt;InputType.CSV:</span> <span class="pre">2&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.TSV:</span> <span class="pre">3&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'list'&gt;],</span> <span class="pre">&lt;InputType.XML:</span> <span class="pre">4&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;],</span> <span class="pre">&lt;InputType.XLSX:</span> <span class="pre">5&gt;:</span> <span class="pre">[&lt;class</span> <span class="pre">'dict'&gt;]}</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.CONVERSIONS" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dictionary of allowable conversions,
 where the key is a supported input type,
 and the value is a list of supported output types.</p>
@@ -159,6 +161,11 @@ and the value is a list of supported output types.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.TSV">
 <span class="sig-name descname"><span class="pre">TSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.TSV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.InputType.XLSX">
+<span class="sig-name descname"><span class="pre">XLSX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#pyobjectify.pyobjectify.InputType.XLSX" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -410,6 +417,12 @@ The calculated connectivity type of the resource.</p></li>
 <dd class="field-odd"><p><a class="reference internal" href="#pyobjectify.pyobjectify.Connectivity" title="pyobjectify.pyobjectify.Connectivity">Connectivity</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyobjectify.pyobjectify.xlsx_to_dict">
+<span class="sig-prename descclassname"><span class="pre">pyobjectify.pyobjectify.</span></span><span class="sig-name descname"><span class="pre">xlsx_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyobjectify.pyobjectify.xlsx_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to convert XLSX data to a dictionary.</p>
 </dd></dl>
 
 <dl class="py function">
