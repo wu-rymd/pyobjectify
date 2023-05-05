@@ -48,6 +48,13 @@ class TestPyobjectify(unittest.TestCase):
         }
         self.assertEqual(actual, expected)
 
+    def test_from_url_output_path(self):
+        path = "pyobjectify/tests/data/dummy.txt"
+        output = pyob.from_url("https://bit.ly/42KCUSv", out_path=path)
+        assert os.path.exists(path) is not None
+        f = open(path, "r")
+        assert f.read() == str(output)
+
 
 if __name__ == "__main__":
     unittest.main()

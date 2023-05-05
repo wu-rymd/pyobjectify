@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pyobjectify &mdash; pyobjectify 0.1.1 documentation</title>
@@ -12,8 +12,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -68,43 +69,12 @@
            <div itemprop="articleBody">
              
   <section id="pyobjectify">
-<h1>pyobjectify<a class="headerlink" href="#pyobjectify" title="Permalink to this heading">¶</a></h1>
+<h1>pyobjectify<a class="headerlink" href="#pyobjectify" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pyobjectify.html">pyobjectify package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyobjectify.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyobjectify.html#module-pyobjectify.pyobjectify">pyobjectify.pyobjectify module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.CONVERSIONS"><code class="docutils literal notranslate"><span class="pre">CONVERSIONS</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.Connectivity"><code class="docutils literal notranslate"><span class="pre">Connectivity</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.Connectivity.LOCAL"><code class="docutils literal notranslate"><span class="pre">Connectivity.LOCAL</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.Connectivity.ONLINE_STATIC"><code class="docutils literal notranslate"><span class="pre">Connectivity.ONLINE_STATIC</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType"><code class="docutils literal notranslate"><span class="pre">InputType</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType.CSV"><code class="docutils literal notranslate"><span class="pre">InputType.CSV</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType.JSON"><code class="docutils literal notranslate"><span class="pre">InputType.JSON</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType.TSV"><code class="docutils literal notranslate"><span class="pre">InputType.TSV</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType.XLSX"><code class="docutils literal notranslate"><span class="pre">InputType.XLSX</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.InputType.XML"><code class="docutils literal notranslate"><span class="pre">InputType.XML</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.OUTPUT_TYPES"><code class="docutils literal notranslate"><span class="pre">OUTPUT_TYPES</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.Resource"><code class="docutils literal notranslate"><span class="pre">Resource</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.csv_to_list"><code class="docutils literal notranslate"><span class="pre">csv_to_list()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.from_url"><code class="docutils literal notranslate"><span class="pre">from_url()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.get_conversions"><code class="docutils literal notranslate"><span class="pre">get_conversions()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.get_resource_types"><code class="docutils literal notranslate"><span class="pre">get_resource_types()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.json_to_dataframe"><code class="docutils literal notranslate"><span class="pre">json_to_dataframe()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.json_to_dict"><code class="docutils literal notranslate"><span class="pre">json_to_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.json_to_list"><code class="docutils literal notranslate"><span class="pre">json_to_list()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.retrieve_resource"><code class="docutils literal notranslate"><span class="pre">retrieve_resource()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.tsv_to_list"><code class="docutils literal notranslate"><span class="pre">tsv_to_list()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.url_to_connectivity"><code class="docutils literal notranslate"><span class="pre">url_to_connectivity()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.xlsx_to_dict"><code class="docutils literal notranslate"><span class="pre">xlsx_to_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyobjectify.html#pyobjectify.pyobjectify.xml_to_dict"><code class="docutils literal notranslate"><span class="pre">xml_to_dict()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="pyobjectify.html#module-pyobjectify.pyobjectify">pyobjectify.pyobjectify module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyobjectify.html#module-pyobjectify">Module contents</a></li>
 </ul>
 </li>

@@ -410,7 +410,7 @@ def convert(resource, conversions):
     raise TypeError("The type of the resource is not supported.")
 
 
-def from_url(url, out_type=None):
+def from_url(url, out_type=None, out_path=None):
     """
     This is the main interface that the end-user interacts with.
         Given a URL, converts the resource data to a parsable Python object.
@@ -418,6 +418,7 @@ def from_url(url, out_type=None):
     Args:
         url (str): A URL to a resource.
         out_type (:obj:`class`, optional): The user-specified data type of the output.
+        out_path (str, optional): The path the user wants to use to save the output.
 
     Returns:
         object: A parsable Python object representation of the resource.
@@ -447,5 +448,10 @@ def from_url(url, out_type=None):
     # (6) Close the file object if open()-ed
     if connectivity is Connectivity.LOCAL:
         resource.response.close()
+
+    # (7) Check if user wants to save the data somewhere
+    if out_path:
+        with open(out_path, "w") as file:
+            file.write(f"{output}")
 
     return output
